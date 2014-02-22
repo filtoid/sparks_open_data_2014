@@ -16,7 +16,10 @@ src="https://api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.js"></script>
 </head>
 
 <body onload="loaded();">
+<div id="banner">
 <h1>Sparks Open Data Event</h1>
+<br>
+</div>
 <br>
 <!-- 54.98010777115042, -1.6038523304540302
 <img src="http://maps.googleapis.com/maps/api/staticmap?center=54.98010777115042,-1.6038523304540302&zoom=14&size=200x200&sensor=false">-->
@@ -33,7 +36,7 @@ src="https://api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.js"></script>
 <iframe id="iframe_weather" src="weatherPull.php"></iframe> 
 <div id="picture_item">No image Available</div>
 <div id="map" style="height:400px; width:800px"></div>
-<div class="btn_style" onclick="prev_click()">Prev</div>
-<div class="btn_style" onclick="next_click()">Next</div>
+<div class="classname" onclick="prev_click()">Prev</div>
+<div class="classname" onclick="next_click()">Next</div>
 </body>
 </html>
