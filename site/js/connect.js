@@ -1,6 +1,29 @@
 var output =null;
+var cams = null;
  var map=null;
  var curMarker = 0;
+ var finishedLoading = false;
+ 
+ function loadCams(){
+	 $.getJSON( "getcams.php", function( json ) {
+		
+		cams= new Array();
+		
+		var ret = eval(json);
+		for(var i=0;i<ret.length;i++){
+			var item = ret[i].dynamics[0].image;
+			var id= ret[i].systemCodeNumber;
+			
+			for(var j=0;j<output.length;j++){
+				var itm = output[j];
+				if(output[j].id==id){
+					output[j].image = item;
+				}
+			}
+			
+		}
+	});
+ }
  
 function loaded(){
 	// Called when the doc has finished loading
@@ -20,9 +43,8 @@ function loaded(){
 			
 			output[i].point = ll1;
 			output[i].name = ret[i].definitions[0].longDescription;
-			//output += "<img src=\"http://maps.googleapis.com/maps/api/staticmap?center=" + ll1.lat +"," + ll1.lng+"&zoom=14&size=200x200&sensor=false&key=AIzaSyADV_yN8ZE8qx-pkpzNEbFSwCvMfW4hpxM\">";
+			output[i].id = ret[i].systemCodeNumber;
 		}
-		
 		
 		map = L.map('map').setView([output[0].point.lat, output[0].point.lng], 13);
 		//map = L.map('map').setView([54.900, -1.166], 13);
@@ -30,6 +52,8 @@ function loaded(){
                  maxZoom: 18
              }).addTo(map);
  
+	     
+	     
              //geolocate
              map.locate({setView: true, maxZoom: 16});
 		
@@ -48,17 +72,37 @@ function loaded(){
 	     	
 		}
 	});
+
+	loadCams();
+	updatePic();
+	finishedLoading=true;
 	
 }
 function next_click(){
+	
+	if(!finishedLoading)
+		return;
+	
 	output[curMarker].marker.closePopup();
 	curMarker+=1;
 	if(curMarker>=curMarker.length)
 		curMarker=0;
-	output[curMarker].marker.bindPopup(output[1].name).openPopup();
+	output[curMarker].marker.bindPopup(output[curMarker].name).openPopup();
+	
+	var iframe = $('#iframe_weather');
+	$('#iframe_weather').src = "weatherPull.php?lat="+output[curMarker].point.lat+"&lng="+output[curMarker].point.lng;
+	updatePic();
+	
+	//iframe.contentWindow.location.reload(true);
+	
+	//weatherPull.php?
+	
 }
 
 function prev_click(){
+	
+	if(!finishedLoading)
+		return;
 	
 	output[curMarker].marker.closePopup();
 	curMarker-=1;
@@ -66,8 +110,20 @@ function prev_click(){
 		curMarker = output.length-1;
 	
 	output[curMarker].marker.bindPopup(output[1].name).openPopup();
+	updatePic();
+	
+	
 }
 
+function updatePic(){
+	
+	if(!finishedLoading)
+		return;
+	
+	if(output[curMarker].image!=null){
+		$('#picture_item').html("<img src='"+output[curMarker].image+"'>");
+	}
+}
 
 /*	OLD CODE
 	  data: '{"username": "' + username + '", "password" : "' + password + '"}',

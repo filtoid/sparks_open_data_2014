@@ -30,7 +30,8 @@ src="https://api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.js"></script>
 });
  
      </script>
-
+<iframe id="iframe_weather" src="weatherPull.php"></iframe> 
+<div id="picture_item">No image Available</div>
 <div id="map" style="height:400px; width:800px"></div>
 <div class="btn_style" onclick="prev_click()">Prev</div>
 <div class="btn_style" onclick="next_click()">Next</div>
