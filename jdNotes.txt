@@ -4,3 +4,7 @@ track historical weather data to determine travel time/arrival time
 phil: mapping
 ???: travel data
 jon: weather
+
+copy getjson
+change url to dynamic
+....then nag further...
