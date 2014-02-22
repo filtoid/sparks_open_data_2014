@@ -13,10 +13,10 @@
 		function getData(data){
 			console.debug("getData");
 			console.debug(data);
-			var theIcon = data.weather[0].icon;
-			console.debug(theIcon);
-			
-			$("<p>test</p>").appendTo("#weather");
+			//var theIcon = data.weather[0].icon;
+			//console.debug(theIcon);
+			console.debug(data.weather[0].icon);
+			console.debug(data.weather[0].description);
 		}
 		$.getJSON(weatherDataURL, getData);
 		console.debug("end");
