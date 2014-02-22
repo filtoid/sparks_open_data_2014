@@ -9,16 +9,23 @@
 	<div id="weather"></div>
 	<script>
 		console.debug("start");
-		var weatherDataURL = "http://api.openweathermap.org/data/2.5/weather?lat=35&lon=139";
+		var lat = <?=$_GET['lat']?$_GET['lat']:35?>;
+		var lon = <?=$_GET['lon']?$_GET['lon']:139?>;
+		var weatherDataURL = "http://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+lon;
+		$.getJSON(weatherDataURL, getData);
 		function getData(data){
 			console.debug("getData");
 			console.debug(data);
-			//var theIcon = data.weather[0].icon;
-			//console.debug(theIcon);
 			console.debug(data.weather[0].icon);
 			console.debug(data.weather[0].description);
+			var weatherIcon = "http://openweathermap.org/img/w/"+data.weather[0].icon+".png";
+			console.debug(weatherIcon);
+			weatherIcon = "<img src="+weatherIcon+">";
+			$(weatherIcon).appendTo("#weather");
+			var weatherDesc = data.weather[0].description;
+			weatherDesc = "<p>"+weatherDesc+"</p>";
+			$(weatherDesc).appendTo("#weather");
 		}
-		$.getJSON(weatherDataURL, getData);
 		console.debug("end");
 	</script>
 </body>
