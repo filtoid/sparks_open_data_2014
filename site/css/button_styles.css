@@ -1,0 +1,8 @@
+.btn_style
+{
+	width:75px;
+	height:50px;
+	background-color:blue;
+	color:yellow;
+	cursor:pointer;
+}
