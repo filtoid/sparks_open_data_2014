@@ -5,8 +5,14 @@
 	<script type="text/javascript" src="js/connect.js"></script>
 	<script type="text/javascript" src="js/jscoord-1.1.1.js"></script>
 	<link rel="stylesheet" type="text/css" href="js/leaflet.css" />
+	
+	<link rel="stylesheet" type="text/css" href="css/button_styles.css" />
 <script type="text/javascript" src="js/leaflet.js"></script>
 <script type="text/javascript" src="js/leafletembed.js"></script>
+<link rel="stylesheet" 
+href="https://api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.css" />
+     <script 
+src="https://api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.js"></script>
 </head>
 
 <body onload="loaded();">
@@ -15,6 +21,18 @@
 <!-- 54.98010777115042, -1.6038523304540302
 <img src="http://maps.googleapis.com/maps/api/staticmap?center=54.98010777115042,-1.6038523304540302&zoom=14&size=200x200&sensor=false">-->
 <div id="output"></div>
- <div id="map"></div>
+
+     <script type="text/javascript">
+        
+         $( document ).ready(function() {
+             //load map
+             
+});
+ 
+     </script>
+
+<div id="map" style="height:400px; width:800px"></div>
+<div class="btn_style" onclick="prev_click()">Prev</div>
+<div class="btn_style" onclick="next_click()">Next</div>
 </body>
 </html>
