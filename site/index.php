@@ -3,7 +3,6 @@
 <head>
 	<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
 	<script type="text/javascript" src="js/connect.js"></script>
-	<script type="text/javascript" src="js/convert.js"></script>
 	<script type="text/javascript" src="js/jscoord-1.1.1.js"></script>
 </head>
 
