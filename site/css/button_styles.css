@@ -23,7 +23,7 @@
 	width:150px;
 	height:50px;
 	float:right;
-	top:350px;
+	top:320px;
 	left:850px;
 	background-color:grey;
 }
@@ -31,7 +31,7 @@
 #banner{
 	background-color:lightblue;
 	width:100%;
-	height:120px;
+	height:100px;
 	font-family:arial;
 }
 

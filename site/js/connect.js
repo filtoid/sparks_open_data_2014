@@ -71,9 +71,10 @@ function loaded(){
 			//}).addTo(map);
 	     	
 		}
+
+		loadCams();
 	});
 
-	loadCams();
 	updatePic();
 	finishedLoading=true;
 	
@@ -85,7 +86,7 @@ function next_click(){
 	
 	output[curMarker].marker.closePopup();
 	curMarker+=1;
-	if(curMarker>=curMarker.length)
+	if(curMarker>=output.length)
 		curMarker=0;
 	output[curMarker].marker.bindPopup(output[curMarker].name).openPopup();
 	
